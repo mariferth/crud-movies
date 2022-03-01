@@ -1,90 +1,94 @@
-<h1>Lista de Filmes</h1>
-<table>
-  <tr>
-    <th>Título</th>
-    <th>Ano de Lançamento</th>
-    <th>Gênero</th>
-    <th>Sinopse</th>
-    <th>Classificação Indicativa</th>
-    <th>Crítica</th>
-    <th>Avaliação</th>
-  </tr>
-  <tr *ngFor="let filme of lista_filmes; let i = index">
-    <td>{{filme.getTitulo()}}</td>
-    <td>{{filme.getAnoLancamento()}}</td>
-    <td>{{filme.getAnoLancamento()}}</td>
-    <td>{{filme.getGenero()}}</td>
-    <td>{{filme.getSinopse()}}</td>
-    <td>{{filme.getClassificacao()}}</td>
-    <td>{{filme.getCritica()}}</td>
-    <td>{{filme.getAvaliacao()}}</td>
-    <td>
-      <button (click)="excluir(i)">Excluir</button>
-      <button (click)="editar(i)">Editar</button>
-    </td>
-  </tr>
-</table>
+<mat-tab-group #adaptarTab>
 
-<hr>
-<hr>
+  <mat-tab label="Operações">
+    <div *ngIf="!edicao; else editarFilme;">
+      <h1>Adicionar Filme</h1>
+    </div>
+    
+    <ng-template #editarFilme>
+      <h1>Editar Filme</h1>
+    </ng-template>
+    
+    <label>Título:</label><br>
+    <input type="text" [(ngModel)]="titulo"><br><br>
+    <label>Ano de Lançamento:</label><br>
+    <input type="number" [(ngModel)]="ano_lancamento"><br><br>
+    
+    <label for="genero"><span style="color: red">*</span>Gênero:</label><br>
+    <select [(ngModel)]="genero" name="genero" id="generoId" required>
+      <option></option>
+      <option value="acao">Ação</option>
+      <option value="animacao">Animação</option>
+      <option value="aventura">Aventura</option>
+      <option value="comedia">Comédia</option>
+      <option value="danca">Dança</option>
+      <option value="documentario">Documentário</option>
+      <option value="drama">Drama</option>
+      <option value="espionagem">Espionagem</option>
+      <option value="ficcaoCientifica">Ficção Científica</option>
+      <option value="musical">Musical</option>
+      <option value="romance">Romance</option>
+      <option value="terror">Terror</option>
+      <option value="thriller">Thriller</option>
+      
+    </select><br><br>
+    
+    <label>Sinopse:</label><br>
+    <input type="text" [(ngModel)]="sinopse"><br><br>
+    
+    <label [(ngModel)]="classificacao" for="classificacao"><span style="color: red">*</span>Classificação Indicativa:</label><br>
+    <select [(ngModel)]="classificacao" name="classificacao" id="classificacaoId" required>
+      <option></option>
+      <option value="l">L</option>
+      <option value="10">10</option>
+      <option value="12">12</option>
+      <option value="14">14</option>
+      <option value="16">16</option>
+      <option value="18">18</option>
+    </select><br><br>
+    
+    <label>Crítica:</label><br>
+    <input type="text" [(ngModel)]="critica"><br><br>
+    
+    <label for="avaliacao"><span style="color: red">*</span>Avaliação:</label><br>
+    <select [(ngModel)]="avaliacao" name="avaliacao" id="avaliacaoId" required>
+      <option></option>
+      <option value="muitoRuim">Muito Ruim</option>
+      <option value="ruim">Ruim</option>  
+      <option value="bom">Bom</option>
+      <option value="muitoBom">Muito Bom</option>
+      <option value="Otimo">Ótimo</option>
+    </select><br><br>
+    
+    <button (click)="salvar()">Salvar</button>
+  </mat-tab>
 
-<div *ngIf="!edicao; else editarFilme">
-  <h1>Adicionar Filme</h1>
-</div>
+  <mat-tab label="Lista de Filmes"> 
+    <table>
+      <tr>
+        <th>Título</th>
+        <th>Ano de Lançamento</th>
+        <th>Gênero</th>
+        <th>Sinopse</th>
+        <th>Classificação Indicativa</th>
+        <th>Crítica</th>
+        <th>Avaliação</th>
+      </tr>
+      <tr *ngFor="let filme of lista_filmes; let i = index">
+        <td>{{filme.getTitulo()}}</td>
+        <td>{{filme.getAnoLancamento()}}</td>
+        <td>{{filme.getAnoLancamento()}}</td>
+        <td>{{filme.getGenero()}}</td>
+        <td>{{filme.getSinopse()}}</td>
+        <td>{{filme.getClassificacao()}}</td>
+        <td>{{filme.getCritica()}}</td>
+        <td>{{filme.getAvaliacao()}}</td>
+        <td>
+          <button (click)="excluir(i)">Excluir</button>
+          <button (click)="editar(i)">Editar</button>
+        </td>
+      </tr>
+    </table>
 
-<ng-template #editarFilme>
-  <h1>Editar Filme</h1>
-</ng-template>
-
-<label>Título:</label>
-<input type="text" [(ngModel)]="titulo"><br>
-<label>Ano de Lançamento:</label>
-<input type="number" [(ngModel)]="ano_lancamento"><br><br>
-
-<label for="genero"><span style="color: red">*</span>Gênero:</label>
-<select [(ngModel)]="genero" name="genero" id="generoId" required>
-  <option></option>
-  <option value="acao">Ação</option>
-  <option value="animacao">Animação</option>
-  <option value="aventura">Aventura</option>
-  <option value="comedia">Comédia</option>
-  <option value="danca">Dança</option>
-  <option value="documentario">Documentário</option>
-  <option value="drama">Drama</option>
-  <option value="espionagem">Espionagem</option>
-  <option value="ficcaoCientifica">Ficção Científica</option>
-  <option value="musical">Musical</option>
-  <option value="romance">Romance</option>
-  <option value="terror">Terror</option>
-  <option value="thriller">Thriller</option>
-  
-</select><br><br>
-
-<label>Sinopse:</label>
-<input type="text" [(ngModel)]="sinopse"><br><br>
-
-<label [(ngModel)]="classificacao" for="classificacao"><span style="color: red">*</span>Classificação Indicativa:</label>
-<select [(ngModel)]="classificacao" name="classificacao" id="classificacaoId" required>
-  <option></option>
-  <option value="l">L</option>
-  <option value="10">10</option>
-  <option value="12">12</option>
-  <option value="14">14</option>
-  <option value="16">16</option>
-  <option value="18">18</option>
-</select><br><br>
-
-<label>Crítica:</label>
-<input type="text" [(ngModel)]="critica"><br><br>
-
-<label for="avaliacao"><span style="color: red">*</span>Avaliação:</label>
-<select [(ngModel)]="avaliacao" name="avaliacao" id="avaliacaoId" required>
-  <option></option>
-  <option value="muitoRuim">Muito Ruim</option>
-  <option value="ruim">Ruim</option>  
-  <option value="bom">Bom</option>
-  <option value="muitoBom">Muito Bom</option>
-  <option value="Otimo">Ótimo</option>
-</select><br><br>
-
-<button (click)="salvar()">Salvar</button>
+  </mat-tab>
+</mat-tab-group>

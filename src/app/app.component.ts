@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Filme } from './models/filme';
+import {MatTabGroup, MatTabsModule} from '@angular/material/tabs';
+import { taggedTemplate } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,7 @@ export class AppComponent {
   public avaliacao : string | undefined;
   public edicao : boolean = false;
   public indice : number = -1;
+  
 
   constructor() {
     let filme = new Filme("Sing", 2016, "Animação", 
@@ -90,6 +93,7 @@ export class AppComponent {
   }
 
   public editar(index : number) {
+    this.mudarTab(); 
     this.edicao = true;
     this.indice = index;
     this.titulo = this.lista_filmes[index].getTitulo();
@@ -100,4 +104,18 @@ export class AppComponent {
     this.critica = this.lista_filmes[index].getCritica();
     this.avaliacao = this.lista_filmes[index].getAvaliacao();
   }
+
+  /*Solução para que, quando for selecionado o botão "Editar" em um filme, seja trocado para a tab Operações
+  de forma automática */
+
+  /*O operador ! faz com que o Angular sete por si um valor para 'adaptarTab', necessário pois
+  o atributo strict (tsconfig.json) tem o valor "true" - as variáveis precisam
+  ser devidamente declaradas para não gerar erro
+  */
+  @ViewChild("adaptarTab") adaptarTab! : MatTabGroup; 
+  public mudarTab() {
+    const tabGroup = this.adaptarTab; 
+    tabGroup.selectedIndex = 0; 
+  }
+
 }
