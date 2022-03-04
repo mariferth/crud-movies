@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Filme } from './models/filme';
 import {MatTabGroup} from '@angular/material/tabs';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { Dialogo } from './models/dialogo';
 
 @Component({
   selector: 'app-root',
@@ -89,8 +87,16 @@ export class AppComponent {
 
   public excluir(index : number) {
     //console.log(index);
-    this.lista_filmes.splice(index, 1);
-    alert("Filme excluído com sucesso!")
+    var dialog = confirm("Você quer mesmo excluir esse filme?"); 
+    if(dialog == true) {
+
+      this.lista_filmes.splice(index, 1);
+      alert("Filme excluído com sucesso!")
+
+    } else {
+      alert("Operação cancelada com sucesso!"); 
+    }
+    
   }
 
   public editar(index : number) {
@@ -119,12 +125,13 @@ export class AppComponent {
     tabGroup.selectedIndex = 0; 
   }
 
+  /*
   @ViewChild("confirmarExc") confirmarExc! : MatDialog; 
   public confirmarExclusao() {
     const dialog = new Dialogo(this.confirmarExc);
 
     dialog.openDialog(); 
     
-  }
+  }*/
 
 }
