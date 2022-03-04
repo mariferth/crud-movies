@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Filme } from './models/filme';
+import {MatTabGroup} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   public avaliacao : string | undefined;
   public edicao : boolean = false;
   public indice : number = -1;
+  
 
   constructor() {
     let filme = new Filme("Sing", 2016, "Animação", 
@@ -85,11 +87,20 @@ export class AppComponent {
 
   public excluir(index : number) {
     //console.log(index);
-    this.lista_filmes.splice(index, 1);
-    alert("Filme excluído com sucesso!")
+    var dialog = confirm("Você quer mesmo excluir esse filme?"); 
+    if(dialog == true) {
+
+      this.lista_filmes.splice(index, 1);
+      alert("Filme excluído com sucesso!")
+
+    } else {
+      alert("Operação cancelada com sucesso!"); 
+    }
+    
   }
 
   public editar(index : number) {
+    this.mudarTab(); 
     this.edicao = true;
     this.indice = index;
     this.titulo = this.lista_filmes[index].getTitulo();
@@ -100,4 +111,27 @@ export class AppComponent {
     this.critica = this.lista_filmes[index].getCritica();
     this.avaliacao = this.lista_filmes[index].getAvaliacao();
   }
+
+  /*Solução para que, quando for selecionado o botão "Editar" em um filme, seja trocado para a tab Operações
+  de forma automática */
+
+  /*O operador ! faz com que o Angular sete por si um valor para 'adaptarTab', necessário pois
+  o atributo strict (tsconfig.json) tem o valor "true" - as variáveis precisam
+  ser devidamente declaradas para não gerar erro
+  */
+  @ViewChild("adaptarTab") adaptarTab! : MatTabGroup; 
+  public mudarTab() {
+    const tabGroup = this.adaptarTab; 
+    tabGroup.selectedIndex = 0; 
+  }
+
+  /*
+  @ViewChild("confirmarExc") confirmarExc! : MatDialog; 
+  public confirmarExclusao() {
+    const dialog = new Dialogo(this.confirmarExc);
+
+    dialog.openDialog(); 
+    
+  }*/
+
 }
