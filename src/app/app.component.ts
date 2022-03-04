@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Filme } from './models/filme';
-import {MatTabGroup, MatTabsModule} from '@angular/material/tabs';
-import { taggedTemplate } from '@angular/compiler/src/output/output_ast';
+import {MatTabGroup} from '@angular/material/tabs';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { Dialogo } from './models/dialogo';
 
 @Component({
   selector: 'app-root',
@@ -116,6 +117,14 @@ export class AppComponent {
   public mudarTab() {
     const tabGroup = this.adaptarTab; 
     tabGroup.selectedIndex = 0; 
+  }
+
+  @ViewChild("confirmarExc") confirmarExc! : MatDialog; 
+  public confirmarExclusao() {
+    const dialog = new Dialogo(this.confirmarExc);
+
+    dialog.openDialog(); 
+    
   }
 
 }

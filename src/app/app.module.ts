@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialog} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     AppRoutingModule,
     NoopAnimationsModule, 
     BrowserAnimationsModule, 
-    MatTabsModule
+    MatTabsModule, 
+    MatDialog
   ],
   providers: [],
   bootstrap: [AppComponent]
