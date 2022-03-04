@@ -9,10 +9,10 @@
       <h1>Editar Filme</h1>
     </ng-template>
     
-    <label>Título:</label><br>
+    <label><span style="color: red">*</span>Título:</label><br>
     <input type="text" [(ngModel)]="titulo"><br><br>
 
-    <label>Ano de Lançamento:</label><br>
+    <label><span style="color: red">*</span>Ano de Lançamento:</label><br>
     <input type="number" [(ngModel)]="ano_lancamento"><br><br>
     
     <label for="genero"><span style="color: red">*</span>Gênero:</label><br>
@@ -34,7 +34,7 @@
       
     </select><br><br>
     
-    <label>Sinopse:</label><br>
+    <label><span style="color: red">*</span>Sinopse:</label><br>
     <input type="text" [(ngModel)]="sinopse"><br><br>
     
     <label [(ngModel)]="classificacao" for="classificacao"><span style="color: red">*</span>Classificação Indicativa:</label><br>
@@ -48,7 +48,7 @@
       <option value="18">18</option>
     </select><br><br>
     
-    <label>Crítica:</label><br>
+    <label><span style="color: red">*</span>Crítica:</label><br>
     <input type="text" [(ngModel)]="critica"><br><br>
     
     <label for="avaliacao"><span style="color: red">*</span>Avaliação:</label><br>
