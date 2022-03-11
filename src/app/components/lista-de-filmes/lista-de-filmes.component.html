@@ -1,0 +1,42 @@
+<h1>Lista de Filmes</h1>
+
+<mat-tab-group #adaptarTab>
+
+    <mat-tab label="Lista de Filmes">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Ano de Lançamento</th>
+                    <th>Gênero</th>
+                    <th>Sinopse</th>
+                    <th>Classificação Indicativa</th>
+                    <th>Crítica</th>
+                    <th>Avaliação</th>
+                    <th colspan="2">Operação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let filme of lista_filmes; let i = index">
+                    <td>{{filme.getTitulo()}}</td>
+                    <td>{{filme.getAnoLancamento()}}</td>
+                    <td>{{filme.getGenero()}}</td>
+                    <td>{{filme.getSinopse()}}</td>
+                    <td>{{filme.getClassificacao()}}</td>
+                    <td>{{filme.getCritica()}}</td>
+                    <td>{{filme.getAvaliacao()}}</td>
+                    <td>
+                        <button (click)="excluir(i)">Excluir</button>
+                    </td>
+                    <td>
+                        <button (click)="editar(i)">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </mat-tab>
+</mat-tab-group>

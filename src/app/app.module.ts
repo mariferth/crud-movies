@@ -7,10 +7,16 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ListaDeFilmesComponent } from './components/lista-de-filmes/lista-de-filmes.component';
+import { CriarFilmeComponent } from './components/criar-filme/criar-filme.component';
+import { EditarFilmeComponent } from './components/editar-filme/editar-filme.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListaDeFilmesComponent,
+    CriarFilmeComponent,
+    EditarFilmeComponent
   ],
   imports: [
     FormsModule,

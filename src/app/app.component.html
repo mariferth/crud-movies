@@ -1,95 +1,115 @@
+<router-outlet></router-outlet>
+
+<!--
 <mat-tab-group #adaptarTab>
 
   <mat-tab label="Operações">
     <div *ngIf="!edicao; else editarFilme;">
       <h1>Adicionar Filme</h1>
     </div>
-    
+
     <ng-template #editarFilme>
       <h1>Editar Filme</h1>
     </ng-template>
-    
-    <label><span style="color: red">*</span>Título:</label><br>
-    <input type="text" [(ngModel)]="titulo"><br><br>
 
-    <label><span style="color: red">*</span>Ano de Lançamento:</label><br>
-    <input type="number" [(ngModel)]="ano_lancamento"><br><br>
-    
-    <label for="genero"><span style="color: red">*</span>Gênero:</label><br>
-    <select [(ngModel)]="genero" name="genero" id="generoId" required>
-      <option></option>
-      <option value="Ação">Ação</option>
-      <option value="Animação">Animação</option>
-      <option value="Aventura">Aventura</option>
-      <option value="Comédia">Comédia</option>
-      <option value="Dança">Dança</option>
-      <option value="Documentário">Documentário</option>
-      <option value="Drama">Drama</option>
-      <option value="Espionagem">Espionagem</option>
-      <option value="Ficção Científica">Ficção Científica</option>
-      <option value="Musical">Musical</option>
-      <option value="Romance">Romance</option>
-      <option value="Terror">Terror</option>
-      <option value="Thriller">Thriller</option>
-      
-    </select><br><br>
-    
-    <label><span style="color: red">*</span>Sinopse:</label><br>
-    <input type="text" [(ngModel)]="sinopse"><br><br>
-    
-    <label [(ngModel)]="classificacao" for="classificacao"><span style="color: red">*</span>Classificação Indicativa:</label><br>
-    <select [(ngModel)]="classificacao" name="classificacao" id="classificacaoId" required>
-      <option></option>
-      <option value="L">L</option>
-      <option value="10">10</option>
-      <option value="12">12</option>
-      <option value="14">14</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
-    </select><br><br>
-    
-    <label><span style="color: red">*</span>Crítica:</label><br>
-    <input type="text" [(ngModel)]="critica"><br><br>
-    
-    <label for="avaliacao"><span style="color: red">*</span>Avaliação:</label><br>
-    <select [(ngModel)]="avaliacao" name="avaliacao" id="avaliacaoId" required>
-      <option></option>
-      <option value="Muito ruim">Muito Ruim</option>
-      <option value="Ruim">Ruim</option>  
-      <option value="Bom">Bom</option>
-      <option value="Muito bom">Muito Bom</option>
-      <option value="Ótimo">Ótimo</option>
-    </select><br><br>
-    
-    <button (click)="salvar()">Salvar</button>
+    <fieldset>
+      <label><span style="color: red">*</span>Título:</label><br>
+      <input type="text" [(ngModel)]="titulo"><br><br>
+
+      <label><span style="color: red">*</span>Ano de Lançamento:</label><br>
+      <input type="number" [(ngModel)]="ano_lancamento"><br><br>
+
+      <label for="genero"><span style="color: red">*</span>Gênero:</label><br>
+      <select [(ngModel)]="genero" name="genero" id="generoId" required>
+        <option></option>
+        <option value="Ação">Ação</option>
+        <option value="Animação">Animação</option>
+        <option value="Aventura">Aventura</option>
+        <option value="Comédia">Comédia</option>
+        <option value="Dança">Dança</option>
+        <option value="Documentário">Documentário</option>
+        <option value="Drama">Drama</option>
+        <option value="Espionagem">Espionagem</option>
+        <option value="Ficção Científica">Ficção Científica</option>
+        <option value="Musical">Musical</option>
+        <option value="Romance">Romance</option>
+        <option value="Terror">Terror</option>
+        <option value="Thriller">Thriller</option>
+
+      </select><br><br>
+
+      <label><span style="color: red">*</span>Sinopse:</label><br>
+      <textarea id="sinopse" [(ngModel)]="sinopse" rows="4" cols="80" placeholder="Descreva a Sinopse aqui"
+        required></textarea>
+      <br><br>
+
+      <label [(ngModel)]="classificacao" for="classificacao"><span style="color: red">*</span>Classificação
+        Indicativa:</label><br>
+      <select [(ngModel)]="classificacao" name="classificacao" id="classificacaoId" required>
+        <option></option>
+        <option value="L">L</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="16">16</option>
+        <option value="18">18</option>
+      </select><br><br>
+
+      <label><span style="color: red">*</span>Crítica:</label><br>
+      <textarea id="critica" [(ngModel)]="critica" rows="4" cols="80" placeholder="Descreva sua Crítica aqui"
+        required></textarea>
+      <br><br>
+
+      <label for="avaliacao"><span style="color: red">*</span>Avaliação:</label><br>
+      <select [(ngModel)]="avaliacao" name="avaliacao" id="avaliacaoId" required>
+        <option></option>
+        <option value="Muito ruim">Muito Ruim</option>
+        <option value="Ruim">Ruim</option>
+        <option value="Bom">Bom</option>
+        <option value="Muito bom">Muito Bom</option>
+        <option value="Ótimo">Ótimo</option>
+      </select><br><br>
+
+      <button (click)="salvar()">Salvar</button>
+    </fieldset>
   </mat-tab>
 
-  <mat-tab label="Lista de Filmes"> 
-    <table>
-      <tr>
-        <th>Título</th>
-        <th>Ano de Lançamento</th>
-        <th>Gênero</th>
-        <th>Sinopse</th>
-        <th>Classificação Indicativa</th>
-        <th>Crítica</th>
-        <th>Avaliação</th>
-      </tr>
-      <tr *ngFor="let filme of lista_filmes; let i = index">
-        <td>{{filme.getTitulo()}}</td>
-        <td>{{filme.getAnoLancamento()}}</td>
-        <td>{{filme.getAnoLancamento()}}</td>
-        <td>{{filme.getGenero()}}</td>
-        <td>{{filme.getSinopse()}}</td>
-        <td>{{filme.getClassificacao()}}</td>
-        <td>{{filme.getCritica()}}</td>
-        <td>{{filme.getAvaliacao()}}</td>
-        <td>
-          <button (click)="excluir(i)">Excluir</button>
-          <button (click)="editar(i)">Editar</button>
-        </td>
-      </tr>
+  <mat-tab label="Lista de Filmes">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Ano de Lançamento</th>
+          <th>Gênero</th>
+          <th>Sinopse</th>
+          <th>Classificação Indicativa</th>
+          <th>Crítica</th>
+          <th>Avaliação</th>
+          <th colspan="2">Operação</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let filme of lista_filmes; let i = index">
+          <td>{{filme.getTitulo()}}</td>
+          <td>{{filme.getAnoLancamento()}}</td>
+          <td>{{filme.getGenero()}}</td>
+          <td>{{filme.getSinopse()}}</td>
+          <td>{{filme.getClassificacao()}}</td>
+          <td>{{filme.getCritica()}}</td>
+          <td>{{filme.getAvaliacao()}}</td>
+          <td>
+            <button (click)="excluir(i)">Excluir</button>
+          </td>
+          <td>
+            <button (click)="editar(i)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+
 
   </mat-tab>
 </mat-tab-group>
+-->

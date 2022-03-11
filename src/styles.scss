@@ -36,4 +36,98 @@ $movies-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  background-color: #A5BEFA;
+  color: rgb(255, 255, 255);
+  /*background: url(https://i.pinimg.com/736x/d1/a9/62/d1a962fa7ff2ec47b7d3871d5a0344ed.jpg)
+  no-repeat content-box fixed; */
+  background-size: cover;
+  font-size: 20pt;
+  text-align: left;
+}
+
+form {
+  position: absolute;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-family:'Calibri';
+  font-size: 20px;
+  padding: 15px;
+  margin: 10px 600px 10px 100px;
+}
+
+fieldset {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  width: 800px;
+  height: 800px;
+  margin: 10px 200px 10px 200px;
+}
+
+table, td {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  margin: 10px 10px 10px 10px;
+}
+
+thead {
+  text-align: center;
+  background-color: #B3093F;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-family:'Calibri';
+  font-size: 35px;
+  color:#B3093F;
+}
+
+h5 {
+  font-family:'Calibri';
+  font-size: 28px;
+  color:#B3093F;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+} 
+
+label {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.campo {
+  border: 0;
+  border-bottom: 2px solid #B3093F;
+  outline: none;
+  transition: .2s ease-in-out;
+  box-sizing: border-box;
+}
+
+button {
+  border-style: unset;
+  border-radius: 30px;
+  height: 50px;
+  width: 90px;
+  bottom: 50px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Calibri';
+  font-size: 15pt;
+  background-color: #B3093F;
+}
+
+button:hover {
+  border-style: unset;
+  cursor: pointer;
+  bottom: 50px;
+  font-family: 'Calibri';
+  font-size: 15pt;
+  color: white;
+  background-color: #B3093F;
+}
+
+
