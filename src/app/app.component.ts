@@ -9,7 +9,7 @@ import {MatTabGroup} from '@angular/material/tabs';
 })
 export class AppComponent {
   title = 'movies';
-  public lista_filmes : Filme[] = [];
+  /*public lista_filmes : Filme[] = [];
   public titulo : string | undefined;
   public ano_lancamento : number | undefined;
   public genero : string | undefined;
@@ -19,14 +19,15 @@ export class AppComponent {
   public avaliacao : string | undefined;
   public edicao : boolean = false;
   public indice : number = -1;
-  
+  */
 
   constructor() {
-    let filme = new Filme("Sing", 2016, "Animação", 
+    /*let filme = new Filme("Sing", 2016, "Animação", 
     "Animais fazem uma audição para para participar de um concurso de talentos e salvar a empresa do coala.", "L", "O filme é ótimo!", "Muito Bom");
-    this.lista_filmes.push(filme);
+    this.lista_filmes.push(filme);*/
   }
 
+  /*
   public salvar() {
     if(!this.titulo) {
       alert("Título é obrigatório!");
@@ -110,7 +111,7 @@ export class AppComponent {
     this.classificacao = this.lista_filmes[index].getClassificacao();
     this.critica = this.lista_filmes[index].getCritica();
     this.avaliacao = this.lista_filmes[index].getAvaliacao();
-  }
+  }*/
 
   /*Solução para que, quando for selecionado o botão "Editar" em um filme, seja trocado para a tab Operações
   de forma automática */
@@ -119,11 +120,12 @@ export class AppComponent {
   o atributo strict (tsconfig.json) tem o valor "true" - as variáveis precisam
   ser devidamente declaradas para não gerar erro
   */
+ /*
   @ViewChild("adaptarTab") adaptarTab! : MatTabGroup; 
   public mudarTab() {
     const tabGroup = this.adaptarTab; 
     tabGroup.selectedIndex = 0; 
-  }
+  }*/
 
   /*
   @ViewChild("confirmarExc") confirmarExc! : MatDialog; 

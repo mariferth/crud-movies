@@ -1,1 +1,93 @@
-<p>editar-filme works!</p>
+<fieldset>
+    <h1>Editar Filme</h1>
+    <form [formGroup]="formEditar" (ngSubmit)="submitForm()">
+        <label><span>*</span>Título:</label><br>
+        <input type="text" formControlName="titulo" class="campo"><br><br>
+        <div *ngIf="formEditar.controls['titulo'].touched">
+            <small *ngIf="formEditar.controls['titulo'].hasError('required') "><span>O título é
+                    obrigatório!</span></small>
+            <small *ngIf="formEditar.controls['titulo'].hasError('minlength') "><span>O título deve ter no mínimo 3
+                    caracteres!</span></small>
+        </div>
+
+        <label><span>*</span>Ano de Lançamento:</label><br>
+        <input type="number" formControlName="ano_lancamento" class="campo"><br><br>
+        <div *ngIf="formEditar.controls['ano_lancamento'].touched">
+            <small *ngIf="formEditar.controls['ano_lancamento'].hasError('required') "><span>O ano de lançamento é
+                    obrigatório!</span></small>
+        </div>
+
+        <label for="genero"><span>*</span>Gênero:</label><br>
+        <select formControlName="genero" name="genero" id="generoId" class="campo">
+            <option></option>
+            <option value="Ação">Ação</option>
+            <option value="Animação">Animação</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Comédia">Comédia</option>
+            <option value="Dança">Dança</option>
+            <option value="Documentário">Documentário</option>
+            <option value="Drama">Drama</option>
+            <option value="Espionagem">Espionagem</option>
+            <option value="Ficção Científica">Ficção Científica</option>
+            <option value="Musical">Musical</option>
+            <option value="Romance">Romance</option>
+            <option value="Terror">Terror</option>
+            <option value="Thriller">Thriller</option>
+        </select><br><br>
+        <div *ngIf="formEditar.controls['genero'].touched">
+            <small *ngIf="formEditar.controls['genero'].hasError('required') "><span>O gênero é
+                    obrigatório!</span></small>
+        </div>
+
+        <label><span>*</span>Sinopse:</label><br>
+        <textarea id="sinopse" formControlName="sinopse" rows="4" cols="80" placeholder="Descreva a Sinopse aqui"></textarea>
+        <br><br>
+        <div *ngIf="formEditar.controls['sinopse'].touched">
+            <small *ngIf="formEditar.controls['sinopse'].hasError('required') "><span>A sinopse é
+                    obrigatória!</span></small>
+            <small *ngIf="formEditar.controls['sinopse'].hasError('minlength') "><span>A sinopse deve ter no mínimo 5
+                    caracteres!</span></small>
+        </div>
+
+        <label for="classificacao"><span>*</span>Classificação Indicativa:</label><br>
+        <select formControlName="classificacao" name="classificacao" id="classificacaoId" class="campo">
+            <option></option>
+            <option value="L">L</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+        </select><br><br>
+        <div *ngIf="formEditar.controls['classificacao'].touched">
+            <small *ngIf="formEditar.controls['classificacao'].hasError('required') "><span>A classificação indicativa é
+                    obrigatória!</span></small>
+        </div>
+
+        <label><span>*</span>Crítica:</label><br>
+        <textarea id="critica" formControlName="critica" rows="4" cols="80" placeholder="Descreva sua Crítica aqui"></textarea>
+        <br><br>
+        <div *ngIf="formEditar.controls['critica'].touched">
+            <small *ngIf="formEditar.controls['critica'].hasError('required') "><span>A crítica é
+                    obrigatória!</span></small>
+            <small *ngIf="formEditar.controls['critica'].hasError('minlength') "><span>A crítica deve ter no mínimo 5
+                    caracteres!</span></small>
+        </div>
+
+        <label for="avaliacao"><span>*</span>Avaliação:</label><br>
+        <select formControlName="avaliacao" name="avaliacao" id="avaliacaoId" class="campo">
+            <option></option>
+            <option value="Muito ruim">Muito Ruim</option>
+            <option value="Ruim">Ruim</option>
+            <option value="Bom">Bom</option>
+            <option value="Muito Bom">Muito Bom</option>
+            <option value="Ótimo">Ótimo</option>
+        </select><br><br>
+        <div *ngIf="formEditar.controls['avaliacao'].touched">
+            <small *ngIf="formEditar.controls['avaliacao'].hasError('required') "><span>A avaliação é
+                    obrigatória!</span></small>
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+</fieldset>
