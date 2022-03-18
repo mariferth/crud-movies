@@ -11,6 +11,12 @@ import { ListaDeFilmesComponent } from './components/lista-de-filmes/lista-de-fi
 import { CriarFilmeComponent } from './components/criar-filme/criar-filme.component';
 import { EditarFilmeComponent } from './components/editar-filme/editar-filme.component';
 
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +32,10 @@ import { EditarFilmeComponent } from './components/editar-filme/editar-filme.com
     NoopAnimationsModule, 
     BrowserAnimationsModule, 
     MatTabsModule, 
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
