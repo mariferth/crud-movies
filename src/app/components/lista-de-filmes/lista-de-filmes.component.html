@@ -17,19 +17,19 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let filme of lista_filmes; let i = index">
-                    <td>{{filme.getTitulo()}}</td>
-                    <td>{{filme.getAnoLancamento()}}</td>
-                    <td>{{filme.getGenero()}}</td>
-                    <td>{{filme.getSinopse()}}</td>
-                    <td>{{filme.getClassificacao()}}</td>
-                    <td>{{filme.getCritica()}}</td>
-                    <td>{{filme.getAvaliacao()}}</td>
+                <tr *ngFor="let filme of lista_filmes">
+                    <td>{{filme.titulo}}</td>
+                    <td>{{filme.ano_lancamento}}</td>
+                    <td>{{filme.genero}}</td>
+                    <td>{{filme.sinopse}}</td>
+                    <td>{{filme.classificacao}}</td>
+                    <td>{{filme.critica}}</td>
+                    <td>{{filme.avaliacao}}</td>
                     <td>
-                        <button (click)="excluir(i)">Excluir</button>
+                        <button (click)="excluir(filme)">Excluir</button>
                     </td>
                     <td>
-                        <button (click)="editar(i)">Editar</button>
+                        <button (click)="editar(filme)">Editar</button>
                     </td>
                 </tr>
             </tbody>

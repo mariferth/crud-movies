@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Filme } from 'src/app/models/filme';
-import { FilmesService } from 'src/app/services/filmes.service';
+import { FilmeFirebaseService } from 'src/app/services/filme-firebase.service';
+
 
 @Component({
   selector: 'app-criar-filme',
@@ -14,7 +15,7 @@ export class CriarFilmeComponent implements OnInit {
   public formCadastrar : FormGroup;
   
   constructor(private _router : Router, 
-    private filmeService : FilmesService, 
+    private filmeService : FilmeFirebaseService, 
     private _formBuilder : FormBuilder) { 
       this.formCadastrar = this._formBuilder.group({
         titulo : ["", [Validators.required, Validators.minLength(3)]],
@@ -45,13 +46,12 @@ export class CriarFilmeComponent implements OnInit {
   }
 
   public salvar() {
-    if(this.filmeService.inserirFilme(new Filme(this.formCadastrar.controls["titulo"].value, this.formCadastrar.controls["ano_lancamento"].value, this.formCadastrar.controls["genero"].value, this.formCadastrar.controls["sinopse"].value, this.formCadastrar.controls["classificacao"].value, this.formCadastrar.controls["critica"].value, this.formCadastrar.controls["avaliacao"].value))) {
-      alert("Filme salvo com sucesso!");
+    this.filmeService.criarFilme(this.formCadastrar.value)
+    .then(() => { alert("Filme salvo com sucesso!")
       this._router.navigate(["/listaDeFilmes"]);
-    }
-    else {
-      alert("Erro ao salvar filme!");
-    }
+    })
+    .catch((error) => {console.log(error) 
+      alert("Erro ao salvar filme!")
+    }) 
   }
-
 }

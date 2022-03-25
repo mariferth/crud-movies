@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Filme } from 'src/app/models/filme';
-import { FilmesService } from 'src/app/services/filmes.service';
+import { FilmeFirebaseService } from 'src/app/services/filme-firebase.service';
 
 @Component({
   selector: 'app-lista-de-filmes',
@@ -12,27 +12,32 @@ export class ListaDeFilmesComponent implements OnInit {
   public lista_filmes : Filme[] = [];
 
   constructor(private _router : Router, 
-    private filmeService : FilmesService) {
+    private filmeService : FilmeFirebaseService) {
   }
 
   ngOnInit(): void {
-    this.lista_filmes = this.filmeService.getFilmes();
+    this.filmeService.getFilmes()
+    .subscribe(res => {
+      this.lista_filmes = res.map(e=>{
+        return {
+          id : e.payload.doc.id,
+          ...e.payload.doc.data() as Filme
+        } as Filme;
+      })
+    })
   }
 
-  public excluir(indice : number) {
-    let resultado = confirm("Deseja excluir o filme " + this.filmeService.getFilme(indice).getTitulo() + "?");
+  public excluir(filme : Filme) {
+    let resultado = confirm("Deseja excluir o filme " + filme.titulo + "?");
     if(resultado) {
-      if (this.filmeService.excluirFilme(indice)) {
-        alert("Filme excluído com sucesso!")
-      }
-      else {
-        alert("Erro ao excluir filme!")
-      }
+      this.filmeService.deletarFilme(filme)
+      .then(() => { alert("Filme excluído com sucesso!")})
+      .catch(() => { alert("Erro ao excluir filme!")})
     }
   }
 
-  public editar(indice : number) : void {
-    this._router.navigate(["/editarFilme", indice]);
+  public editar(filme : Filme) : void {
+    this._router.navigate(["/editarFilme", filme.id]);
   }
 
   public irParaCriarFilme() {

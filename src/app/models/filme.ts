@@ -1,22 +1,23 @@
 export class Filme {
-    private _titulo : string;
-    private _ano_lancamento : number;
-    private _genero : string;
-    private _sinopse : string;
-    private _classificacao : string;
-    private _critica : string;
-    private _avaliacao : string;
+    id? : string;
+    titulo : string;
+    ano_lancamento : number;
+    genero : string;
+    sinopse : string;
+    classificacao : string;
+    critica : string;
+    avaliacao : string;
 
     constructor(titulo : string, ano_lancamento : number, genero : string, sinopse : string, classificacao : string, critica : string, avaliacao : string) {
-        this._titulo = titulo;
-        this._ano_lancamento = ano_lancamento;
-        this._genero = genero;
-        this._sinopse = sinopse;
-        this._classificacao = classificacao;
-        this._critica = critica;
-        this._avaliacao = avaliacao;
+        this.titulo = titulo;
+        this.ano_lancamento = ano_lancamento;
+        this.genero = genero;
+        this.sinopse = sinopse;
+        this.classificacao = classificacao;
+        this.critica = critica;
+        this.avaliacao = avaliacao;
     }
-
+/*
     public getTitulo() : string {
         return this._titulo;
     }
@@ -72,4 +73,5 @@ export class Filme {
     public setAvaliacao(avaliacao : string) {
         this._avaliacao = avaliacao;
     }
+    */
 }
