@@ -7,6 +7,7 @@ export class Filme {
     classificacao : string;
     critica : string;
     avaliacao : string;
+    imagemURL? : string;
 
     constructor(titulo : string, ano_lancamento : number, genero : string, sinopse : string, classificacao : string, critica : string, avaliacao : string) {
         this.titulo = titulo;

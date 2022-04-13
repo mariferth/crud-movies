@@ -9,7 +9,7 @@ export class FilmesService {
 
   constructor() {
     this.inserirFilme(new Filme("Sing", 2016, "Animação", 
-    "Animais fazem uma audição para para participar de um concurso de talentos e salvar a empresa do coala.", "L", "O filme é ótimo!", "Muito Bom"));
+    "Animais fazem uma audição para para participar de um concurso de talentos e salvar a empresa do coala.", "L", "O filme é ótimo!", "Muito Bom", "ekfefndn"));
   }
 
   public inserirFilme(filme : Filme) : boolean {

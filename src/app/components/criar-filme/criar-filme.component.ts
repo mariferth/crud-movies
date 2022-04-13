@@ -24,7 +24,8 @@ export class CriarFilmeComponent implements OnInit {
         sinopse: ["", [Validators.required, Validators.minLength(5)]],
         classificacao: ["", [Validators.required]],
         critica: ["", [Validators.required, Validators.minLength(5)]],
-        avaliacao: ["", [Validators.required]]
+        avaliacao: ["", [Validators.required]],
+        imagemURL: ["", [Validators.required]]
       });
     }
 
@@ -46,7 +47,9 @@ export class CriarFilmeComponent implements OnInit {
   }
 
   public salvar() {
-    this.filmeService.criarFilme(this.formCadastrar.value)
+    const target = document.getElementById("file") as HTMLInputElement;
+    const file : File = (target.files as FileList)[0];
+    this.filmeService.uploadStorage(file, this.formCadastrar.value)
     .then(() => { alert("Filme salvo com sucesso!")
       this._router.navigate(["/listaDeFilmes"]);
     })
