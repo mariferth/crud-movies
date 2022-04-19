@@ -2,36 +2,37 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+//use '../../cdk/overlay';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
+//include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$movies-primary: mat.define-palette(mat.$indigo-palette);
-$movies-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+//$movies-primary: mat.define-palette(mat.$indigo-palette);
+//$movies-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$movies-warn: mat.define-palette(mat.$red-palette);
+//$movies-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$movies-theme: mat.define-light-theme((
+/*$movies-theme: mat.define-light-theme((
   color: (
     primary: $movies-primary,
     accent: $movies-accent,
     warn: $movies-warn,
   )
-));
+));*/
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($movies-theme);
+//include mat.all-component-themes($movies-theme);
 
 
 // Custom Theming for Angular Material
@@ -201,7 +202,7 @@ button {
   border-style: unset;
   border-radius: 30px;
   height: 50px;
-  width: 80px;
+  width: 90px;
   //bottom: 50px;
   text-align: center;
   padding-right: 2%;
@@ -254,3 +255,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+#button-logout {
+  //margin: 10px 1250px 10px 1250px;
+  //right: 100px;
+  text-align: center;
+  width: 50px;
+}
+
+#login {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  align-content:center;
+  width: 400px;
+  height: 400px;
+  margin: 100px 400px 10px 400px;
+}
+
+#button-google {
+//bottom: 100%;
+  margin: 250px 100px 10px 100px;
+  background-color: white; 
+  color: black;
+  width: 300px;
+}
+
+#link {
+  margin: 250px 149px 100px 149px;
+}
+

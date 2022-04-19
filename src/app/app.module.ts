@@ -2,8 +2,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { ListaDeFilmesComponent } from './components/lista-de-filmes/lista-de-filmes.component';
@@ -33,12 +38,12 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule, 
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,  
     MatTabsModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule, 
+    AngularFireAuthModule,
     MatCardModule, 
     FlexLayoutModule
   ],

@@ -1,19 +1,28 @@
 <h1>Login</h1>
+<fieldset id="login">
+    <form [formGroup]="formLogin" (ngSubmit)="submitForm()">
+        <label>Email:</label>
+        <input type="text" formControlName="email"><br>
+        <div *ngIf="formLogin.controls['email'].touched">
+            <small *ngIf="formLogin.controls['email'].hasError('required') "><span style="color: red">O email é
+                    obrigatório!</span></small>
+            <small *ngIf="formLogin.controls['email'].hasError('email') "><span style="color: red">Email
+                    inválido!</span></small>
+        </div>
+        <label>Senha:</label>
+        <input type="password" formControlName="password"><br><br>
+        <div *ngIf="formLogin.controls['password'].touched">
+            <small *ngIf="formLogin.controls['password'].hasError('required') "><span style="color: red">A senha é
+                    obrigatória!</span></small>
+            <small *ngIf="formLogin.controls['password'].hasError('minlength') "><span style="color: red">A senha deve
+                    ter no mínimo 6 caracteres!</span></small>
+        </div>
+        <button type="submit">Logar</button>
+    </form><br>
 
-<form [formGroup] = "formLogin" (ngSubmit)= "submitForm()">
-    <label>Email:</label>
-    <input type="text" formControlName="email"><br>
-    <div *ngIf="formLogin.controls['email'].touched">
-        <small *ngIf="formLogin.controls['email'].hasError('required') "><span style="color: red">O email é obrigatório!</span></small>
-        <small *ngIf="formLogin.controls['email'].hasError('email') "><span style="color: red">Email inválido!</span></small>
-    </div>
-    <label>Senha:</label>
-    <input type="password" formControlName="password"><br>
-    <div *ngIf="formLogin.controls['password'].touched">
-        <small *ngIf="formLogin.controls['password'].hasError('required') "><span style="color: red">A senha é obrigatória!</span></small>
-        <small *ngIf="formLogin.controls['password'].hasError('minlength') "><span style="color: red">A senha deve ter no mínimo 6 caracteres!</span></small>
-    </div>
-    <button type="submit">Logar</button>
-</form>
-<button (click) = "logarComGoogleCount()" style="background-color: red; color: white;">Logar com Conta Google</button><br>
-<a routerLink="/cadastro">Não tem Cadastro? Clique aqui!</a>
+    <button (click)="logarComGoogleCount()" id="button-google"><img src="data:image/jpeg;base64,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
+        " height="30" width="30">Logar com Google</button><br>
+
+    <a routerLink="/cadastro" id="link">Não tem Cadastro? Clique aqui!</a>
+
+</fieldset>
