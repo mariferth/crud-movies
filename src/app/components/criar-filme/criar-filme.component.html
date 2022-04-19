@@ -28,6 +28,7 @@
             <option value="Documentário">Documentário</option>
             <option value="Drama">Drama</option>
             <option value="Espionagem">Espionagem</option>
+            <option value="Fantasia">Fantasia</option>
             <option value="Ficção Científica">Ficção Científica</option>
             <option value="Musical">Musical</option>
             <option value="Romance">Romance</option>
@@ -88,7 +89,20 @@
             <small *ngIf="formCadastrar.controls['avaliacao'].hasError('required') "><span>A avaliação é
                     obrigatória!</span></small>
         </div>
-
+        <br>
+    
+        <div class="input-wrapper">
+            <label for="file">Inserir imagem do filme</label>
+            <input type="file" required formControlName="imagemURL" id="file"/>
+            <span id="file-name"></span>
+          </div>
+    
+        <br><br>
+        <div *ngIf="formCadastrar.controls['imagemURL'].touched">
+            <small *ngIf="formCadastrar.controls['imagemURL'].hasError('required') "><span>A imagem é
+                    obrigatória!</span></small>
+        </div>
+    
         <button type="submit">Salvar</button>
     </form>
 </fieldset>

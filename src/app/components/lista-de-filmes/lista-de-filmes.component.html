@@ -37,8 +37,9 @@
                     <th>Sinopse</th> ok
                     <th>Classificação Indicativa</th>
                     <th>Crítica</th>
-                    <th>Avaliação</th> ok
-                    <th colspan="2">Operação</th>
+                    <th>Avaliação</th>
+                    <th>Imagem</th>
+                    <th colspan="4">Operação</th>
                 </tr>
             </thead>
 
@@ -51,6 +52,7 @@
                     <td>{{filme.classificacao}}</td>
                     <td>{{filme.critica}}</td>
                     <td>{{filme.avaliacao}}</td>
+                    <td><img style="width: 100%" src="{{filme.imagemURL}}"><style color="transparent"></style><td>
                     <td>
                         <button (click)="excluir(filme)">Excluir</button>
                     </td>
